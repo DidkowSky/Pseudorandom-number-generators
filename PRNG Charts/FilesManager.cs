@@ -22,12 +22,13 @@ namespace PRNG_Charts
         
         public void RandomToFile(int seed, int range, int numberOfPRNGs)
         {
-            TimerManager timer = new TimerManager();
             String file = "";
             StringBuilder stringBuilder = new StringBuilder();
             String content = "";
             AbstractRandom randomAbstract = new LCG();
             Random random = new Random(seed);
+
+            TimerManager.ClearMessage();
             
             for (int i = 0; i < 3; i++)
             {
@@ -51,7 +52,7 @@ namespace PRNG_Charts
                     file = "Pseudo Random Numbers MSM.csv";
                 }
 
-                timer.TimerStart(file);
+                TimerManager.TimerStart(file);
                 
                 for (int j = 0; j < numberOfPRNGs; j++)
                 {
@@ -59,7 +60,7 @@ namespace PRNG_Charts
                     stringBuilder.Append(Environment.NewLine);
                 }
 
-                timer.TimrStop();
+                TimerManager.TimrStop();
 
                 content = stringBuilder.ToString();
                 WriteToFile(file, content);
@@ -68,7 +69,7 @@ namespace PRNG_Charts
             file = "Pseudo Random Numbers Random C#.csv";
             stringBuilder.Clear();
 
-            timer.TimerStart(file);
+            TimerManager.TimerStart(file);
 
             for (int j = 0; j < numberOfPRNGs; j++)
             {
@@ -76,8 +77,9 @@ namespace PRNG_Charts
                 stringBuilder.Append(Environment.NewLine);
             }
 
-            timer.TimrStop();
-            MessageBox.Show(timer.ShowMessage(),"Czas generowanie poszczególnych plików");
+            TimerManager.TimrStop();
+
+            MessageBox.Show("Pliki zostały wygenerowane.", "Generowanie plików");
 
             content = stringBuilder.ToString();
             WriteToFile(file, content);

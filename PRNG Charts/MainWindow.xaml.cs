@@ -50,7 +50,6 @@ namespace PRNG_Charts
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             comboBox.Items.Refresh();
 
             if (comboBox.Text == "Random C#")
@@ -81,6 +80,7 @@ namespace PRNG_Charts
                 && int.TryParse(textBoxRange.Text, out int range)
                 && int.TryParse(textBoxNumberCount.Text, out int numberCount))
             {
+                comboBox.Text = "";
                 files.RandomToFile(seed, range, numberCount);
             }
             else
@@ -93,6 +93,11 @@ namespace PRNG_Charts
         private void ButtonAnalysis_Click(object sender, RoutedEventArgs e)
         {
             dataAnalysis.GetAnalysisMessage(SeriesCollection[0].Values);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TimerManager.ShowMessage();
         }
     }
 }

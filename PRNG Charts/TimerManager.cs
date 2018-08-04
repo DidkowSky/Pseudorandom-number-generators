@@ -3,42 +3,37 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows;
 
 namespace PRNG_Charts
 {
-    public class TimerManager
+    public static class TimerManager
     {
-        private StringBuilder messageBuilder;
-        private Stopwatch timer;
+        private static StringBuilder messageBuilder = new StringBuilder();
+        private static Stopwatch timer = new Stopwatch();
 
-        public TimerManager()
-        {
-            messageBuilder = new StringBuilder();
-            timer = new Stopwatch();
-        }
-
-        public void TimerStart(String fileName)
+        public static void TimerStart(String fileName)
         {
             timer.Reset();
             messageBuilder.Append(fileName);
             timer.Start();
         }
 
-        public void TimrStop()
+        public static void TimrStop()
         {
             timer.Stop();
             messageBuilder.Append(": " + timer.Elapsed + " ms");
             messageBuilder.Append(Environment.NewLine);
         }
 
-        public void ClearMessage()
+        public static void ClearMessage()
         {
             messageBuilder.Clear();
         }
 
-        public String ShowMessage()
+        public static void ShowMessage()
         {
-            return messageBuilder.ToString();
+            MessageBox.Show(messageBuilder.ToString(), "Czas generowanie poszczególnych plików");
         }
     }
 }
