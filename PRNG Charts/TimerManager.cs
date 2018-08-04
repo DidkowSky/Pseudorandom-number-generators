@@ -11,12 +11,6 @@ namespace PRNG_Charts
     {
         private static StringBuilder messageBuilder = new StringBuilder();
         private static Stopwatch timer = new Stopwatch();
-        /*
-        public static TimerManager()
-        {
-            messageBuilder = new StringBuilder();
-            timer = new Stopwatch();
-        }*/
 
         public static void TimerStart(String fileName)
         {
