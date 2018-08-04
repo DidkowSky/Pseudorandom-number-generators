@@ -94,5 +94,10 @@ namespace PRNG_Charts
         {
             dataAnalysis.GetAnalysisMessage(SeriesCollection[0].Values);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TimerManager.ShowMessage();
+        }
     }
 }
